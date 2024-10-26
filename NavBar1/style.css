@@ -1,0 +1,149 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+:root {
+    --bg-color: #161616;
+    --navbar-color: #242424;
+    --icon-color: #444;
+    --highlight-color: #c7f80d;
+    --marker-color: #55650a;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-color);
+}
+
+ul
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 60px;
+    background: var(--navbar-color);
+    border-radius: 30px;
+}
+
+ul li
+{
+    list-style: none;
+}
+
+ul li a
+{
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    z-index: 1000;
+    color: var(--icon-color);
+}
+
+ul li a ion-icon
+{
+    font-size: 2.5em;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+ul li:hover a ion-icon
+{
+    color: var(--highlight-color);
+    filter: drop-shadow(0 0 15px var(--highlight-color));
+}
+
+ul li.active a ion-icon
+{
+    color: var(--highlight-color);
+    filter: drop-shadow(0 0 15px var(--highlight-color));
+    transform: translateY(-40px);
+}
+
+#marker
+{
+    position: absolute;
+    top: -30px;
+    width: 80px;
+    height: 80px;
+    background: var(--marker-color);
+    border-radius: 20px;
+    border-top: 2px solid var(--highlight-color);
+    border-left: 2px solid var(--highlight-color);
+    box-shadow: 0 0 0 10px var(--bg-color), 0 2px 0 9px var(--highlight-color);
+    transition: 0.5s;
+}
+
+#marker::before
+{
+    content: '';
+    position: absolute;
+    top: 29px;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+
+#marker::after
+{
+    content: '';
+    position: absolute;
+    top: 29px;
+    right: -30px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -4px -4px 0 4px var(--bg-color);
+}
+
+#marker span
+{
+    position: absolute;
+    top: 114px;
+    width: 120%;
+    left: -10%;
+    height: 30px;
+    background: var(--marker-color);
+    box-shadow: 0 0 0 10px var(--bg-color), 0 -2px 0 9px var(--highlight-color);
+    border-radius: 20px;
+    border-right: 1px solid var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+ul li text
+{
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(50px);
+    opacity: 0;
+    font-size: 0.8em;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+ul li.active text
+{
+    opacity: 1;
+    color: var(--highlight-color);
+    filter: drop-shadow(0 0 10px var(--highlight-color));
+}

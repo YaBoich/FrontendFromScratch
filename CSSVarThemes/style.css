@@ -1,0 +1,68 @@
+
+.theme1 {
+    --primary-color: #FF6500;
+    --secondary-color: #1E3E62;
+    --tertiary-color: #0B192C;
+    --button-color: #000000;
+}
+
+.theme2 {
+    --primary-color: #257180;
+    --secondary-color: #F2E5BF;
+    --tertiary-color: #FD8B51;
+    --button-color: #CB6040;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 4fr 100px 1fr;
+    grid-template-rows: 200px 600px 200px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+        "header  header header"
+        "content .      sidebar"
+        "footer  footer footer";
+}
+
+.header {
+    grid-area: header;
+
+    border-radius: 25px;
+    background: var(--tertiary-color);
+}
+
+.main {
+    grid-area: content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 400px;
+
+    border-radius: 25px;
+    background: var(--primary-color);
+}
+
+.sidebar {
+    grid-area: sidebar;
+
+    border-radius: 25px;
+    background: var(--secondary-color);
+}
+
+.footer {
+    grid-area: footer;
+
+    border-radius: 25px;
+    background: var(--tertiary-color);
+}
+
+button {
+    width: 400px;
+    height: 150px;
+    border-radius: 25px;
+    background-color: var(--secondary-color);
+    color: var(--button-color);
+    font-size: 22pt;
+}

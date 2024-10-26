@@ -1,0 +1,72 @@
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10px 20%;
+    grid-template-rows: 1fr 1fr 800px 2fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+        "header   header2  .      sidebar-header"
+        "header   .        .      sidebar"
+        "content1 content2 .      sidebar"
+        "footer   footer   footer footer";
+}
+
+.header {
+    grid-area: header;
+    background: red;
+}
+
+.header2 {
+    grid-area: header2;
+    background: blue;
+}
+
+.sidebar-header {
+    grid-area: sidebar-header;
+    background: red;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: green;
+}
+
+.content1 {
+    grid-area: content1;
+    background: green;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.content2 {
+    grid-area: content2;
+    background: lightgreen;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.footer {
+    grid-area: footer;
+    background: blue;
+}
+
+/* Nested items */
+
+.item1 {
+    background: grey;
+}
+
+.item2 {
+    background: green;
+}
+
+.item3 {
+    background: grey;
+}
+
+.item4 {
+    background: lightgreen;
+}
