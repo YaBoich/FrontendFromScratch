@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>State</title>
+        <link rel='stylesheet' href='style.css'>
+        <script src="./js/state.js"></script>
+    </head>
+    <body class='container'>
+        <div class='item1'>
+            <h1>Simple counter</h1>
+            <p>Will update it's value after a 2s timer</p>
+            <p data-var='counter'>420</p>
+            <p>And you can increment it</p>
+            <button onclick="increment('counter')">Increment</button>
+        </div>
+        <div class='item2'>
+            <h1>Two way binding</h1>
+            <p>You can type stuff into the input field and have it update the other way, too</p>
+            <input type='text' data-linked='textbind' placeholder='type something...' />
+            <p>Mirrored input: <span data-var='textbind'></span></p>
+            <p>(note: This is caching through reloads, I think inputs do that automatically. Need to get that working on first load. It's still working correctly when you start typing after reload, though!)</p>
+        </div>
+        <div class='item3'>
+            <h1>Lists</h1>
+            <p>You can automatically break an array into list elements</p>
+            <p>This button adds a string to the array stored in state</p>
+            <button onclick="addListElement('textList')">Add element</button>
+            <ul data-list='textList'>
+            </ul>
+        </div>
+        <div class='item4'>
+            <h1>Adding elements programatically</h1>
+            <p>Click this button to programatically add an element with the value of the counter from the top left box. Will work the first time you click that.</p>
+            <button onclick="addDiv()">Add counter div</button>
+            <div id="exampleDivSpot"></div>
+        </div>
+    </body>
+</html>

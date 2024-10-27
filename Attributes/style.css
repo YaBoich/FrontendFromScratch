@@ -1,0 +1,22 @@
+
+html, body {
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    background: grey;
+}
+
+.container {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.container > div {
+    height: 300px;
+    width: 500px;
+    background: lightblue;
+    border-radius: 20px;
+}
