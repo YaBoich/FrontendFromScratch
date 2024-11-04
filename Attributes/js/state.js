@@ -1,4 +1,7 @@
 
+// This whole file is crappy because it was written for a quick mini-project.
+// Need extensive cleanup if you wanna use it to actually manage state in a
+// project.
 console.log("loading state");
 
 state = {}
@@ -14,6 +17,7 @@ stateProxy = new Proxy(state, {
 function updateElement(key) {
     const elements = document.querySelectorAll(`[data-var='${key}']`);
     elements.forEach(element => {
+        if (stateProxy[key] === undefined) return;
         element.innerHTML = stateProxy[key];
     });
 
@@ -35,8 +39,9 @@ function updateList(listElement, stateKey) {
     });
 }
 
-// TODO: This currently isn't hooked up - I think this needs to be done
-//       to have dynamically added elements working
+// This gets dynamically added elements working. AFAIK nodeType===1 is a newly
+// added thing.
+// TODO find out what nodeType values mean
 const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
@@ -63,7 +68,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start observing `document.body` for changes
     observer.observe(document.body, { childList: true, subtree: true });
 
+    // Set a variable (need to do it here, not in js global scope)
     stateProxy.counter = 69;
+
+    // TODO: does this work for the 2-way input thing?
+    // UPDATE: no - the value is cached in the input, not js state variable.
+    //updateElement('textbind');
+
+    // TODO: does this work for the 2-way input thing?
+    // UPDATE: yes it does!
+    const element = document.querySelector("[data-linked='textbind']");
+    const stateKey = element.getAttribute("data-linked");
+    if (stateKey) {
+        stateProxy[stateKey] = element.value;
+    }
 });
 
 // Two-way binding for input elements
